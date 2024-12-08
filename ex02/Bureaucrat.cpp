@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) :_name(name){
 	std::cout << "Bureaucrat constructor called" << std::endl;
@@ -28,6 +29,10 @@ const char* Bureaucrat::GradeTooHighException::what() const throw () {
 
 const char* Bureaucrat::GradeTooLowException::what() const throw () {
 	return "\033[31mGrade too low\033[0m";
+}
+
+const char* Bureaucrat::NoSignatureException::what() const throw () {
+	return "\033[31mNo signature found\033[0m";
 }
 
 const std::string Bureaucrat::getName() const{
@@ -65,6 +70,23 @@ void Bureaucrat::setGrade(int grade) {
 		std::cerr << e.what() << std::endl;
 		if (_grade < 1 || _grade > 150)
 		_grade = 150;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+	try {
+		if (form.getExecuteGrade() < _grade) {
+			throw  Bureaucrat::GradeTooLowException();
+		} else if ( form.getIsSingned() == false) {
+			throw Bureaucrat::NoSignatureException();
+		} else {
+			std::cout << _name << " executed " << form.getName()  << std::endl;
+			form.execute(*this);
+		}
+	} catch (const Bureaucrat::GradeTooLowException& e) {
+		std::cerr << e.what() << std::endl;
+	} catch (const Bureaucrat::NoSignatureException& e) {
+		std::cerr << e.what() << std::endl;
 	}
 }
 

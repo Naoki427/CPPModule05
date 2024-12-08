@@ -58,11 +58,11 @@ void Bureaucrat::setGrade(int grade) {
 			_grade = grade;
 		}	
 	} catch (const Bureaucrat::GradeTooHighException& e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 		if (_grade < 1 || _grade > 150)
 		_grade = 150;
 	} catch (const Bureaucrat::GradeTooLowException& e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 		if (_grade < 1 || _grade > 150)
 		_grade = 150;
 	}

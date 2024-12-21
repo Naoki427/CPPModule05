@@ -11,7 +11,7 @@ int main() {
 	std::cout << std::endl;
 
 	std::cout << "\033[33m----------RobotomyRequestForm----------\033[0m" << std::endl;
-	AForm *formB = new RobotomyRequestForm("Darvish");
+	AForm *formB = new RobotomyRequestForm("Franken");
 	formB->beSinged(ishiba);
 	ishiba.executeForm(*formB);
 	std::cout << std::endl;

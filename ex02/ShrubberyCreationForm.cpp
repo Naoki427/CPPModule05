@@ -31,13 +31,13 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 			if (!outFile) {
 				std::cerr << "Failed to open the file." << std::endl;
 			}
-			outFile << "     ^     " << std::endl;
-			outFile << "    ^^^    " << std::endl;
-			outFile << "   ^^^^^   " << std::endl;
-			outFile << "  ^^^^^^^  " << std::endl;
-			outFile << " ^^^^^^^^^ " << std::endl;
-			outFile << "    |||    " << std::endl;
-			outFile << "    |||    " << std::endl;
+			outFile << "     ^     " << "     ^     " << "     ^     " << std::endl;
+			outFile << "    ^^^    " << "    ^^^    " << "    ^^^    " << std::endl;
+			outFile << "   ^^^^^   " << "   ^^^^^   " << "   ^^^^^   " << std::endl;
+			outFile << "  ^^^^^^^  " << "  ^^^^^^^  " << "  ^^^^^^^  " << std::endl;
+			outFile << " ^^^^^^^^^ " << " ^^^^^^^^^ " << " ^^^^^^^^^ " << std::endl;
+			outFile << "    |||    " << "    |||    " << "    |||    " << std::endl;
+			outFile << "    |||    " << "    |||    " << "    |||    " << std::endl;
 		    outFile.close();
 		}
 	} catch (const ShrubberyCreationForm::GradeTooLowException& e) {
